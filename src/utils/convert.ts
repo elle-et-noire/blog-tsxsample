@@ -78,11 +78,16 @@ export const markdownToHtml = async (file: string) => {
     .use(remarkParse)
     .use(gfm)
     .use(require("remark-prism")) // eslint-disable-line
-    // .use(remarkMath)
+    .use(remarkMath)
     .use(remarkRehype, {
       allowDangerousHtml: true
     })
     .use(rehypeExternalLinks, { target: '_blank', rel: ['nofollow', 'noopener', 'noreferrer'] })
+    .use(rehypeMathjax, {
+      tex: {
+        tags: 'ams'
+      }
+    })
     // .use(rehypeMathjax, {
     //   tex: {
     //     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -150,7 +155,8 @@ export const markdownToHtml = async (file: string) => {
       indent: 2,
       indentInitial: true
     })
-    .process(file.replaceAll("\\,", "\\\\,") + mathjaxScript.replaceAll("\\", "\\\\"));
+    .process(file);
+    // .process(file.replaceAll("\\,", "\\\\,") + mathjaxScript.replaceAll("\\", "\\\\"));
   // .process(file.replaceAll("\\,", "\\\\,"));
 
   return result.toString();

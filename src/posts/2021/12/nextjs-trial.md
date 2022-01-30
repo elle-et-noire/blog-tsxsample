@@ -5,6 +5,10 @@ tags:
     - next
 ---
 
+$$
+\require{physics}
+$$
+
 ## はじめに
 
 html+MathJax ベタ書きだとスマホでの表示が崩れて困っていた。
@@ -38,7 +42,8 @@ $$
 \begin{align}
 \int_{-\infty}^\infty \dd{x}e^{-ax^2}&=\sqrt{\dfrac{\pi}{a}}\\\\
 y&=x\\\\
-z\in\mathbb{C}, x\in\R
+z\in\mathbb{C}\\
+\pdv{f}{x}
 \end{align}
 $$
 
